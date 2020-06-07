@@ -1,0 +1,154 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.main {
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Roboto';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f0f0f0;
+}
+
+.chart-container {
+  width: 1000px;
+  height: 700px;
+  background-color: #292929;
+  box-shadow: 0 0 14px 7px #141414;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.chart-container #title {
+  font-size: 1.8rem;
+  color: #f0f0f0;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.overlay {
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: 0 0 3px 5px rgba(206, 206, 206, 0.863);
+}
+
+.info {
+  color: #f0f0f0;
+  font-size: 0.85rem;
+}
+
+.chart-svg {
+  position: relative;
+}
+
+.chart-svg .dot {
+  stroke-width: 3px;
+  fill: transparent;
+  cursor: pointer;
+}
+
+#tooltip {
+  width: 300px;
+  position: absolute;
+  padding: 10px 16px 17px 16px;
+  border-radius: 12px;
+  box-shadow: 0 0 5px 3px rgba(20, 20, 20, 0.378);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #f0f0f0;
+}
+
+.tooltip-head {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+
+.tooltip-head .nationality {
+  font-size: 0.7rem;
+  position: relative;
+  top: 3px;
+  left: 2px;
+  font-weight: 400;
+}
+
+.tooltip-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.tooltip-body .tooltip-detail {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.tooltip-body .tooltip-detail.detail-list .key-value {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 2px 0;
+}
+
+.key-value div {
+  width: 33%;
+}
+
+.key-value div:nth-child(2) {
+  width: fit-content;
+}
+
+.tooltip-detail.doping {
+  font-size: 1.2rem;
+  padding: 2px 5px;
+}
+
+#legend {
+  position: absolute;
+  width: 100%;
+}
+
+#legend .legend-lists {
+  text-align: center;
+  list-style: none;
+}
+
+.legend-item {
+  text-align: center;
+  display: inline-block;
+  padding: 5px 8px;
+}
+
+#y-axis path,
+#x-axis path {
+  stroke: #f0f0f0;
+  stroke-width: 1;
+  fill: none;
+}
+
+#y-axis text,
+#x-axis text {
+  fill: #f0f0f0;
+}
+
+#y-axis line,
+#x-axis line {
+  stroke: #f0f0f0;
+}
