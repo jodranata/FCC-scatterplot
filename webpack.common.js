@@ -2,6 +2,9 @@ const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+
+const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
   entry: {
@@ -32,19 +35,28 @@ module.exports = {
       },
       {
         test: /\.(s*)css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: process.env.NODE_ENV === 'development',
+            },
+          },
+          'css-loader',
+        ],
       },
     ],
   },
   plugins: [
     new webpack.HashedModuleIdsPlugin(),
     new HtmlWebpackPlugin({
-      inject: 'true',
       template: './dist/index.html',
       filename: 'index.html',
     }),
+    new FaviconsWebpackPlugin('./dist/favicon.png'),
     new MiniCssExtractPlugin({
-      filename: 'styles/styles.[contenthash].css',
+      filename: devMode ? 'styles/[name].css' : 'styles/[name].[hash].css',
+      chunkFilename: devMode ? 'styles/[id].css' : 'styles/[id].[hash].css',
     }),
   ],
 };
