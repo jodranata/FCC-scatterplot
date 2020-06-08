@@ -1,23 +1,10 @@
-const path = require('path');
+const merge = require('webpack-merge');
+const common = require('./webpack.common');
 
-module.exports = {
-  entry: './src/index.js',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-  },
+module.exports = merge(common, {
+  mode: 'development',
+  devtool: '#eval-source-map',
   devServer: {
-    contentBase: './dist',
     port: 3000,
   },
-  module: {
-    rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /(nodu_modules|bower_components)/,
-        loader: 'babel-loader',
-      },
-    ],
-  },
-  resolve: { extensions: ['*', '.js', '.jsx'] },
-};
+});

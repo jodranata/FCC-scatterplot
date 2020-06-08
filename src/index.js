@@ -5,6 +5,7 @@ import renderLegend from './render/renderLegend';
 import createDropShadow from './create/createDropShadow';
 import { createXscale, createYScale } from './create/createScale';
 import { chartConstant, legendIndex } from './constant';
+import './style.css';
 
 const url = `https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/cyclist-data.json`;
 const { width, height, marginLeft, xPadding, yPadding } = chartConstant;
